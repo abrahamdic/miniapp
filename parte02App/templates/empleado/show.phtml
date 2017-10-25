@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- opcion para retornar al listado -->
+	<a href="<?= $_SERVER['REDIRECT_BASE'] . '/empleado/listado'; ?>">Volver</a>
+
+	<!-- Detalle del empleado -->
+	<?php foreach ($data as $value) { ?>
+		
+		<h2><?= $value['name'] ?></h2>
+		<strong>Email: </strong> <?= $value['email'] ?><br>
+		<strong>Teléfono: </strong> <?= $value['phone'] ?><br>
+		<strong>Dirección: </strong> <?= $value['address'] ?><br>
+		<strong>Puesto: </strong> <?= $value['position'] ?><br>
+		<strong>Sueldo: </strong> <?= $value['salary'] ?><br>
+		<strong>Habilidades:</strong>
+
+		<!-- detalle de habilidades -->
+		<div style="margin-left:15px;">
+		<?php foreach ($value['skills'] as $skill) { ?>
+			<li><?= $skill['skill']; ?></li>
+		<?php } ?>
+		</div>
+
+	<?php } ?>
+	
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- formulario para enviar el valor de la búsqueda -->
+	<form action="<?= $_SERVER['REDIRECT_BASE'] . '/empleado/search'; ?>" method="get">
+		<input type="text" name="string" placeholder="Ingrese email ...">
+		<input type="submit" value="Buscar">
+		<a href="<?= $_SERVER['REDIRECT_BASE'] . '/empleado/listado'; ?>">Ver todos</a>
+	</form>
+
+	<!-- mensaje de respuesta-->
+	<p>
+		<?= $msg; ?>
+	</p>
+
+	<!-- listado de empleados -->
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Posición</th>
+			<th>Sueldo</th>
+			<th>Operaciones</th>
+		</thead>
+		<tbody>
+			<?php foreach ($data as $key => $value) { ?>
+				<tr>
+					<td><?= $value['name']; ?></td>
+					<td><?= $value['email']; ?></td>
+					<td><?= $value['position']; ?></td>
+					<td><?= $value['salary']; ?></td>
+					<td>
+						<a href="<?= $_SERVER['REDIRECT_BASE'] . '/empleado/show/' . $value['id'] ; ?>">Ver Detalle</a>
+					</td>
+				</tr>
+			<?php } ?>
+			
+		</tbody>
+	</table>
+</body>
+</html>
